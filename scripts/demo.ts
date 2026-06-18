@@ -7,6 +7,7 @@
  *   3. npm run demo
  */
 
+import "dotenv/config";
 import { generateExercises, lesson1 } from "klear-core";
 
 async function main() {
