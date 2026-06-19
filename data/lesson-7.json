@@ -1,0 +1,104 @@
+{
+  "id": 7,
+  "title": "The Weekend / 주말",
+  "vocab": [
+    { "korean": "계절", "english": "season", "pos": "noun" },
+    { "korean": "극장", "english": "theater", "pos": "noun" },
+    { "korean": "꽃", "english": "flower", "pos": "noun" },
+    { "korean": "나라", "english": "country", "pos": "noun" },
+    { "korean": "내년", "english": "next year", "pos": "noun" },
+    { "korean": "대학원", "english": "graduate school", "pos": "noun" },
+    { "korean": "방학", "english": "school vacation", "pos": "noun" },
+    { "korean": "악기", "english": "musical instrument", "pos": "noun" },
+    { "korean": "액션 영화", "english": "action movie", "pos": "noun" },
+    { "korean": "여름", "english": "summer", "pos": "noun" },
+    { "korean": "여행(하다)", "english": "travel", "pos": "noun" },
+    { "korean": "영화", "english": "movie", "pos": "noun" },
+    { "korean": "영화관", "english": "movie theater", "pos": "noun" },
+    { "korean": "코미디", "english": "comedy", "pos": "noun" },
+    { "korean": "피아노", "english": "piano", "pos": "noun" },
+    { "korean": "받다", "english": "to receive", "pos": "verb" },
+    { "korean": "축하하다", "english": "to congratulate", "pos": "verb" },
+    { "korean": "아마", "english": "probably, perhaps", "pos": "adverb" },
+    { "korean": "정말", "english": "really", "pos": "adverb" },
+    { "korean": "무슨", "english": "what, what kind of", "pos": "adjective" },
+    { "korean": "어느", "english": "which", "pos": "adjective" },
+    { "korean": "~(으)ㄹ 거예요", "english": "probability", "pos": "suffix" },
+    { "korean": "가을", "english": "autumn, fall", "pos": "noun" },
+    { "korean": "겨울", "english": "winter", "pos": "noun" },
+    { "korean": "마트", "english": "supermarket", "pos": "noun" },
+    { "korean": "봄", "english": "spring", "pos": "noun" },
+    { "korean": "설거지(하다)", "english": "dishwashing", "pos": "noun" },
+    { "korean": "신문", "english": "newspaper", "pos": "noun" },
+    { "korean": "심리학", "english": "psychology", "pos": "noun" },
+    { "korean": "이야기(하다)", "english": "talk, chat", "pos": "noun" },
+    { "korean": "전공(하다)", "english": "major", "pos": "noun" },
+    { "korean": "주", "english": "week", "pos": "noun" },
+    { "korean": "준비(하다)", "english": "preparation", "pos": "noun" },
+    { "korean": "청소(하다)", "english": "cleaning", "pos": "noun" },
+    { "korean": "학기말", "english": "the end of the semester", "pos": "noun" },
+    { "korean": "조용하다", "english": "to be quiet", "pos": "adjective" },
+    { "korean": "흐리다", "english": "to be cloudy", "pos": "adjective" },
+    { "korean": "만들다", "english": "to make", "pos": "verb" },
+    { "korean": "보내다", "english": "to spend time", "pos": "verb" },
+    { "korean": "장(을) 보다", "english": "to buy groceries", "pos": "verb" },
+    { "korean": "가끔", "english": "sometimes, occasionally", "pos": "adverb" },
+    { "korean": "많이", "english": "much, many", "pos": "adverb" },
+    { "korean": "서로", "english": "each other", "pos": "adverb" },
+    { "korean": "특히", "english": "particularly", "pos": "adverb" },
+    { "korean": "~고", "english": "and (clausal connective)", "pos": "suffix" },
+    { "korean": "독서", "english": "reading", "pos": "noun" },
+    { "korean": "연극", "english": "play", "pos": "noun" },
+    { "korean": "공포 영화", "english": "horror movie", "pos": "noun" },
+    { "korean": "농구", "english": "basketball", "pos": "noun" },
+    { "korean": "축구", "english": "soccer", "pos": "noun" },
+    { "korean": "야구", "english": "baseball", "pos": "noun" },
+    { "korean": "소설", "english": "novel", "pos": "noun" },
+    { "korean": "시", "english": "poetry", "pos": "noun" },
+    { "korean": "만화책", "english": "comic book", "pos": "noun" },
+    { "korean": "잡지", "english": "magazine", "pos": "noun" },
+    { "korean": "한식", "english": "Korean food", "pos": "noun" },
+    { "korean": "양식", "english": "Western food", "pos": "noun" },
+    { "korean": "문학", "english": "literature", "pos": "noun" },
+    { "korean": "역사", "english": "history", "pos": "noun" },
+    { "korean": "정치학", "english": "political science", "pos": "noun" }
+  ],
+  "grammar": [
+    {
+      "id": "G7.1",
+      "pattern": "Vst + (으)ㄹ 거예요",
+      "description": "Expression of probability, intention, or plan. For probability, it translates to 'probably' or 'likely'. For intention, it translates to 'will' or 'am going to'.",
+      "examples": [
+        { "kor": "이번 방학에 뭐 할 거예요?", "eng": "What will you do this vacation?" },
+        { "kor": "친구하고 영화 볼 거예요.", "eng": "I'm going to see a movie with a friend." }
+      ]
+    },
+    {
+      "id": "G7.2",
+      "pattern": "무슨 vs. 어느",
+      "description": "'무슨' asks 'what kind of' (open-ended). '어느' asks 'which' (choice from a limited set). Both must precede a noun.",
+      "examples": [
+        { "kor": "무슨 영화 좋아해요?", "eng": "What (kind of) movies do you like?" },
+        { "kor": "어느 극장에서 볼 거예요?", "eng": "Which theater (of the known ones) will you watch it at?" }
+      ]
+    },
+    {
+      "id": "G7.3",
+      "pattern": "Clause1 + 고 + Clause2",
+      "description": "Used to link two clauses like 'and'. Indicates that two states coexist or events happen sequentially.",
+      "examples": [
+        { "kor": "어제는 흐리고 추웠어요.", "eng": "Yesterday was cloudy and cold." },
+        { "kor": "밥을 먹고 학교에 가요.", "eng": "I eat and (then) go to school." }
+      ]
+    },
+    {
+      "id": "G7.4",
+      "pattern": "네 / 아니요 (negative questions)",
+      "description": "In Korean, 'Yes' (네) signifies agreement with the statement asked, even if the question is negative.",
+      "examples": [
+        { "kor": "파티에 안 갈 거예요?", "eng": "Are you not going to the party?" },
+        { "kor": "네, 안 갈 거예요.", "eng": "Yes (that is correct), I am not going." }
+      ]
+    }
+  ]
+}

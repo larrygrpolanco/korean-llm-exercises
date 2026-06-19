@@ -1,0 +1,94 @@
+{
+  "id": 6,
+  "title": "My Day / 나의 하루",
+  "vocab": [
+    { "korean": "날씨", "english": "weather", "pos": "noun" },
+    { "korean": "말(하다)", "english": "speech, words", "pos": "noun" },
+    { "korean": "버스", "english": "bus", "pos": "noun" },
+    { "korean": "볼펜", "english": "ballpoint pen", "pos": "noun" },
+    { "korean": "비행기", "english": "airplane", "pos": "noun" },
+    { "korean": "연필", "english": "pencil", "pos": "noun" },
+    { "korean": "자전거", "english": "bicycle", "pos": "noun" },
+    { "korean": "지하철", "english": "subway", "pos": "noun" },
+    { "korean": "차", "english": "car", "pos": "noun" },
+    { "korean": "트럭", "english": "truck", "pos": "noun" },
+    { "korean": "하루", "english": "(one) day", "pos": "noun" },
+    { "korean": "한인타운", "english": "Koreatown", "pos": "noun" },
+    { "korean": "까지", "english": "up to (location/time)", "pos": "particle" },
+    { "korean": "(으)로", "english": "by means of", "pos": "particle" },
+    { "korean": "에서", "english": "from (location)", "pos": "particle" },
+    { "korean": "가깝다", "english": "to be close, near", "pos": "adjective" },
+    { "korean": "덥다", "english": "to be hot", "pos": "adjective" },
+    { "korean": "멀다", "english": "to be far", "pos": "adjective" },
+    { "korean": "쉽다", "english": "to be easy", "pos": "adjective" },
+    { "korean": "어렵다", "english": "to be difficult", "pos": "adjective" },
+    { "korean": "좁다", "english": "to be narrow", "pos": "adjective" },
+    { "korean": "춥다", "english": "to be cold", "pos": "adjective" },
+    { "korean": "걸리다", "english": "to take [time]", "pos": "verb" },
+    { "korean": "살다", "english": "to live", "pos": "verb" },
+    { "korean": "보통", "english": "usually", "pos": "adverb" },
+    { "korean": "얼마나/얼마", "english": "how long/how much", "pos": "adverb" },
+    { "korean": "좀", "english": "a little", "pos": "adverb" },
+    { "korean": "쯤", "english": "about, around", "pos": "suffix" },
+    { "korean": "대답(하다)", "english": "answer", "pos": "noun" },
+    { "korean": "때", "english": "time (during)", "pos": "noun" },
+    { "korean": "수영(하다)", "english": "swimming", "pos": "noun" },
+    { "korean": "수영장", "english": "swimming pool", "pos": "noun" },
+    { "korean": "어제", "english": "yesterday", "pos": "noun" },
+    { "korean": "음악", "english": "music", "pos": "noun" },
+    { "korean": "주말", "english": "weekend", "pos": "noun" },
+    { "korean": "중학교", "english": "middle school", "pos": "noun" },
+    { "korean": "축구(하다)", "english": "soccer", "pos": "noun" },
+    { "korean": "클래식", "english": "classical music", "pos": "noun" },
+    { "korean": "태권도", "english": "Taekwondo", "pos": "noun" },
+    { "korean": "테니스장", "english": "tennis court", "pos": "noun" },
+    { "korean": "파티", "english": "party", "pos": "noun" },
+    { "korean": "지난", "english": "last, past", "pos": "adjective" },
+    { "korean": "바쁘다", "english": "to be busy", "pos": "adjective" },
+    { "korean": "모르다", "english": "to not know", "pos": "verb" },
+    { "korean": "일어나다", "english": "to get up", "pos": "verb" },
+    { "korean": "너무", "english": "too much", "pos": "adverb" },
+    { "korean": "못", "english": "cannot", "pos": "adverb" },
+    { "korean": "안", "english": "do not", "pos": "adverb" },
+    { "korean": "왜", "english": "why", "pos": "adverb" },
+    { "korean": "자주", "english": "often", "pos": "adverb" }
+  ],
+  "grammar": [
+    {
+      "id": "G6.1",
+      "pattern": "N + (으)로",
+      "description": "Indicates the means of transportation or the instrument/tool used.",
+      "examples": [
+        { "kor": "학교에 버스로 가요.", "eng": "I go to school by bus." },
+        { "kor": "볼펜으로 쓰세요.", "eng": "Please write with a ballpoint pen." }
+      ]
+    },
+    {
+      "id": "G6.2",
+      "pattern": "Irregular predicates in /ㅂ/",
+      "description": "When a stem ends in ㅂ and is followed by a vowel suffix (like ~어요), the ㅂ changes to 우. Note that 좁다 (to be narrow) is regular.",
+      "examples": [
+        { "kor": "날씨가 추워요.", "eng": "The weather is cold." },
+        { "kor": "시험이 어려워요.", "eng": "The test is difficult." }
+      ]
+    },
+    {
+      "id": "G6.3",
+      "pattern": "Vst + ~었/았/ㅆ어요",
+      "description": "Indicates that an event has already taken place. Follows vowel harmony rules similar to the polite ending.",
+      "examples": [
+        { "kor": "집에 갔어요.", "eng": "I went home." },
+        { "kor": "점심 먹었어요.", "eng": "I ate lunch." }
+      ]
+    },
+    {
+      "id": "G6.4",
+      "pattern": "안/못 + Verb",
+      "description": "안 expresses a general negation or lack of volition (don't). 못 expresses inability due to external circumstances (can't).",
+      "examples": [
+        { "kor": "학교에 안 가요.", "eng": "I don't go to school (by choice)." },
+        { "kor": "학교에 못 가요.", "eng": "I can't go to school (e.g., sick)." }
+      ]
+    }
+  ]
+}

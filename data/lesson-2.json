@@ -1,0 +1,89 @@
+{
+  "id": 2,
+  "title": "Korean Language Class / 한국어 수업",
+  "vocab": [
+    { "korean": "도서관", "english": "library", "pos": "noun" },
+    { "korean": "수업", "english": "course, class", "pos": "noun" },
+    { "korean": "숙제", "english": "homework", "pos": "noun" },
+    { "korean": "식당", "english": "restaurant / cafeteria", "pos": "noun" },
+    { "korean": "아침", "english": "breakfast / morning", "pos": "noun" },
+    { "korean": "친구", "english": "friend", "pos": "noun" },
+    { "korean": "커피", "english": "coffee", "pos": "noun" },
+    { "korean": "학교", "english": "school", "pos": "noun" },
+    { "korean": "들", "english": "plural particle", "pos": "particle" },
+    { "korean": "어", "english": "oh", "pos": "interjection" },
+    { "korean": "괜찮다", "english": "to be all right, okay", "pos": "adjective" },
+    { "korean": "넓다", "english": "to be spacious, wide", "pos": "adjective" },
+    { "korean": "많다", "english": "to be many, much", "pos": "adjective" },
+    { "korean": "맛있다", "english": "to be delicious", "pos": "adjective" },
+    { "korean": "어떻다", "english": "to be how", "pos": "adjective" },
+    { "korean": "재미있다", "english": "to be fun, interesting", "pos": "adjective" },
+    { "korean": "좋다", "english": "to be good, nice", "pos": "adjective" },
+    { "korean": "먹다", "english": "to eat", "pos": "verb" },
+    { "korean": "앉다", "english": "to sit", "pos": "verb" },
+    { "korean": "알다", "english": "to know", "pos": "verb" },
+    { "korean": "아주", "english": "very, really", "pos": "adverb" },
+    { "korean": "공부(하다)", "english": "study", "pos": "verb" },
+    { "korean": "남자", "english": "man", "pos": "noun" },
+    { "korean": "내일", "english": "tomorrow", "pos": "noun" },
+    { "korean": "시험", "english": "test, exam", "pos": "noun" },
+    { "korean": "역사", "english": "history", "pos": "noun" },
+    { "korean": "오늘", "english": "today", "pos": "noun" },
+    { "korean": "음식", "english": "food", "pos": "noun" },
+    { "korean": "주스", "english": "juice", "pos": "noun" },
+    { "korean": "텔레비전", "english": "television", "pos": "noun" },
+    { "korean": "을/를", "english": "object particle", "pos": "particle" },
+    { "korean": "그리고", "english": "and", "pos": "conjunction" },
+    { "korean": "만나다", "english": "to meet", "pos": "verb" },
+    { "korean": "보다", "english": "to see, watch", "pos": "verb" },
+    { "korean": "쓰다", "english": "to write", "pos": "verb" },
+    { "korean": "지내다", "english": "to get along", "pos": "verb" },
+    { "korean": "하다", "english": "to do", "pos": "verb" },
+    { "korean": "맛없다", "english": "to be tasteless", "pos": "adjective" },
+    { "korean": "싸다", "english": "to be cheap", "pos": "adjective" },
+    { "korean": "재미없다", "english": "to be uninteresting", "pos": "adjective" },
+    { "korean": "크다", "english": "to be big", "pos": "adjective" },
+    { "korean": "어떻게", "english": "how", "pos": "adverb" },
+    { "korean": "요즘", "english": "these days", "pos": "adverb" },
+    { "korean": "잘", "english": "well", "pos": "adverb" },
+    { "korean": "지금", "english": "now", "pos": "adverb" }
+  ],
+  "grammar": [
+    {
+      "id": "G2.1",
+      "pattern": "N이/가",
+      "description": "Indicates the subject of the sentence. 이 follows a consonant, 가 follows a vowel. Note that first-person pronouns change form when combined with 가.",
+      "examples": [
+        { "kor": "커피가 맛있어요.", "eng": "The coffee is delicious." },
+        { "kor": "한국어 수업이 재미있어요.", "eng": "Korean class is fun." }
+      ]
+    },
+    {
+      "id": "G2.2",
+      "pattern": "Vst + 어요/아요 (Regular)",
+      "description": "The most frequently used polite ending form in conversation. ~아요 is used if the last vowel of the stem is '오' or '아'. Otherwise, ~어요 is used.",
+      "examples": [
+        { "kor": "숙제가 많아요.", "eng": "There is a lot of homework." },
+        { "kor": "커피가 맛있어요.", "eng": "The coffee is delicious." }
+      ]
+    },
+    {
+      "id": "G2.3",
+      "pattern": "Vst + 어요/아요 (Irregular)",
+      "description": "Applies to '하다' verbs, vowel contractions, and '으' deletion.",
+      "examples": [
+        { "kor": "한국어를 공부해요.", "eng": "I study Korean." },
+        { "kor": "학교가 커요.", "eng": "The school is big." }
+      ]
+    },
+    {
+      "id": "G2.4",
+      "pattern": "N을/를",
+      "description": "Marks the object of the verb. 을 follows a consonant, 를 follows a vowel.",
+      "examples": [
+        { "kor": "리사가 아침을 먹어요.", "eng": "Lisa eats breakfast." },
+        { "kor": "유미가 텔레비전을 봐요.", "eng": "Yumi watches television." }
+      ]
+    }
+  ]
+}

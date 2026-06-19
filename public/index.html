@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korean LLM Exercise Playground</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Korean LLM Exercise Playground</h1>
+      <nav id="lesson-nav">
+        <!-- Lesson tabs rendered by app.js -->
+      </nav>
+    </header>
+
+    <main>
+      <section id="exercise-types">
+        <!--
+          Exercise type buttons are auto-discovered at runtime from
+          prompts/lesson-N/*.md files.  Adding a new .md file to a
+          lesson's prompt directory makes it appear as a button when
+          that lesson is selected — no code changes and no server
+          restart required.
+        -->
+      </section>
+
+      <section id="controls">
+        <!-- Generate button + count input (Issue #2) -->
+      </section>
+
+      <section id="results">
+        <!-- Exercise cards rendered by app.js (Issue #2) -->
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        KLEAR Textbook &middot; DeepSeek LLM &middot; Prompt Engineering
+        Playground
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "id": 5,
+  "title": "At the Bookstore / 서점에서",
+  "vocab": [
+    { "korean": "공원", "english": "park", "pos": "noun" },
+    { "korean": "다음", "english": "next, following", "pos": "noun" },
+    { "korean": "랩", "english": "lab", "pos": "noun" },
+    { "korean": "백화점", "english": "department store", "pos": "noun" },
+    { "korean": "생일", "english": "birthday", "pos": "noun" },
+    { "korean": "선물", "english": "present, gift", "pos": "noun" },
+    { "korean": "쇼핑(하다)", "english": "shopping", "pos": "noun" },
+    { "korean": "연습(하다)", "english": "practice", "pos": "noun" },
+    { "korean": "오래간만", "english": "after a long time", "pos": "noun" },
+    { "korean": "운동(하다)", "english": "exercise", "pos": "noun" },
+    { "korean": "일(하다)", "english": "work", "pos": "noun" },
+    { "korean": "저녁", "english": "evening / dinner", "pos": "noun" },
+    { "korean": "전화(하다)", "english": "phone call", "pos": "noun" },
+    { "korean": "점심", "english": "lunch", "pos": "noun" },
+    { "korean": "커피숍", "english": "coffee shop, cafe", "pos": "noun" },
+    { "korean": "테니스", "english": "tennis", "pos": "noun" },
+    { "korean": "햄버거", "english": "hamburger", "pos": "noun" },
+    { "korean": "가르치다", "english": "to teach", "pos": "verb" },
+    { "korean": "사다", "english": "to buy", "pos": "verb" },
+    { "korean": "치다", "english": "to play (tennis)", "pos": "verb" },
+    { "korean": "또", "english": "again", "pos": "adverb" },
+    { "korean": "에", "english": "to (dest) / at, in (time)", "pos": "particle" },
+    { "korean": "에서", "english": "in, at (dynamic location)", "pos": "particle" },
+    { "korean": "그런데", "english": "by the way / however", "pos": "conjunction" },
+    { "korean": "그럼", "english": "(if so) then", "pos": "conjunction" },
+    { "korean": "가게", "english": "store", "pos": "noun" },
+    { "korean": "오전", "english": "morning, a.m.", "pos": "noun" },
+    { "korean": "오후", "english": "afternoon, p.m.", "pos": "noun" },
+    { "korean": "옷", "english": "clothes", "pos": "noun" },
+    { "korean": "이번", "english": "this (time)", "pos": "noun" },
+    { "korean": "정치학", "english": "political science", "pos": "noun" },
+    { "korean": "학기", "english": "semester", "pos": "noun" },
+    { "korean": "월요일", "english": "Monday", "pos": "noun" },
+    { "korean": "화요일", "english": "Tuesday", "pos": "noun" },
+    { "korean": "수요일", "english": "Wednesday", "pos": "noun" },
+    { "korean": "목요일", "english": "Thursday", "pos": "noun" },
+    { "korean": "금요일", "english": "Friday", "pos": "noun" },
+    { "korean": "토요일", "english": "Saturday", "pos": "noun" },
+    { "korean": "일요일", "english": "Sunday", "pos": "noun" },
+    { "korean": "걷다", "english": "to walk", "pos": "verb" },
+    { "korean": "듣다", "english": "to listen / to take (a course)", "pos": "verb" },
+    { "korean": "좋아하다", "english": "to like", "pos": "verb" },
+    { "korean": "같이", "english": "together", "pos": "adverb" },
+    { "korean": "언제", "english": "when", "pos": "adverb" },
+    { "korean": "과목", "english": "course, subject", "pos": "counter" },
+    { "korean": "분", "english": "minute", "pos": "counter" },
+    { "korean": "시", "english": "hour, o'clock", "pos": "counter" },
+    { "korean": "하고", "english": "with", "pos": "particle" },
+    { "korean": "(으)러", "english": "in order to", "pos": "suffix" }
+  ],
+  "grammar": [
+    {
+      "id": "G5.1",
+      "pattern": "N에 vs N에서",
+      "description": "에 indicates a static location (existence) or a destination. 에서 indicates the location where an activity takes place.",
+      "examples": [
+        { "kor": "집에 계세요.", "eng": "He is at home. (Static)" },
+        { "kor": "공원에서 운동해요.", "eng": "I exercise at the park. (Dynamic Activity)" }
+      ]
+    },
+    {
+      "id": "G5.2",
+      "pattern": "Subject + Object + Verb (SOV)",
+      "description": "The basic word order is Subject-Object-Verb. The order of subject and object is flexible, but the verb must always come at the end.",
+      "examples": [
+        { "kor": "유미가 교실에서 한국어를 공부해요.", "eng": "Yumi studies Korean in the classroom." },
+        { "kor": "교실에서 한국어를 유미가 공부해요.", "eng": "Yumi studies Korean in the classroom (emphasis changed)." }
+      ]
+    },
+    {
+      "id": "G5.3",
+      "pattern": "Vst + (으)러 + 가다/오다",
+      "description": "Indicates the purpose of going or coming. Parallel to '(in order) to [verb]'.",
+      "examples": [
+        { "kor": "점심 먹으러 식당에 가요.", "eng": "I go to the cafeteria to eat lunch." },
+        { "kor": "테니스 치러 가요.", "eng": "I go to play tennis." }
+      ]
+    },
+    {
+      "id": "G5.4",
+      "pattern": "Irregular verbs in /ㄷ/",
+      "description": "For some verbs ending in ㄷ, the ㄷ changes to ㄹ when followed by a vowel.",
+      "examples": [
+        { "kor": "음악을 들어요.", "eng": "I listen to music." },
+        { "kor": "공원을 걸어요.", "eng": "I walk in the park." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": 1,
+  "title": "Greetings / 인사",
+  "vocab": [
+    { "korean": "학년", "english": "school year", "pos": "noun" },
+    { "korean": "1학년", "english": "freshman", "pos": "noun" },
+    { "korean": "2학년", "english": "sophomore", "pos": "noun" },
+    { "korean": "3학년", "english": "junior", "pos": "noun" },
+    { "korean": "4학년", "english": "senior", "pos": "noun" },
+    { "korean": "대학생", "english": "college student", "pos": "noun" },
+    { "korean": "미국", "english": "the United States", "pos": "noun" },
+    { "korean": "사람", "english": "person", "pos": "noun" },
+    { "korean": "인사", "english": "greeting", "pos": "noun" },
+    { "korean": "학생", "english": "student", "pos": "noun" },
+    { "korean": "한국", "english": "Korea", "pos": "noun" },
+    { "korean": "저", "english": "I (humble)", "pos": "pronoun" },
+    { "korean": "나", "english": "I (plain)", "pos": "pronoun" },
+    { "korean": "이름", "english": "name", "pos": "noun" },
+    { "korean": "선생님", "english": "teacher", "pos": "noun" },
+    { "korean": "씨", "english": "Mr./Ms.", "pos": "noun" },
+    { "korean": "영국", "english": "United Kingdom", "pos": "noun" },
+    { "korean": "영어", "english": "English language", "pos": "noun" },
+    { "korean": "일본", "english": "Japan", "pos": "noun" },
+    { "korean": "중국", "english": "China", "pos": "noun" },
+    { "korean": "프랑스", "english": "France", "pos": "noun" },
+    { "korean": "클래스", "english": "class", "pos": "noun" },
+    { "korean": "한국어", "english": "Korean language", "pos": "noun" },
+    { "korean": "뭐", "english": "what", "pos": "pronoun" },
+    { "korean": "네", "english": "yes", "pos": "adverb" },
+    { "korean": "아니요", "english": "no", "pos": "adverb" },
+    { "korean": "안녕하다", "english": "to be well", "pos": "verb" },
+    { "korean": "그렇다", "english": "to be so", "pos": "verb" },
+    { "korean": "반갑다", "english": "to be glad", "pos": "verb" },
+    { "korean": "이다", "english": "to be (copula)", "pos": "verb" },
+    { "korean": "아니다", "english": "to not be", "pos": "verb" },
+    { "korean": "과", "english": "lesson / chapter", "pos": "noun" },
+    { "korean": "도", "english": "also / too", "pos": "particle" },
+    { "korean": "은", "english": "topic particle", "pos": "particle" },
+    { "korean": "이", "english": "subject particle", "pos": "particle" }
+  ],
+  "grammar": [
+    {
+      "id": "G1.1",
+      "pattern": "N1은/는 N2이에요/예요",
+      "description": "Topic-comment equational expression using the topic particle 은/는 and the copula 이에요/예요",
+      "examples": [
+        { "kor": "저는 학생이에요.", "eng": "I am a student." },
+        { "kor": "저는 선생님이에요.", "eng": "I am a teacher." },
+        { "kor": "마이클은 대학생이에요.", "eng": "Michael is a college student." }
+      ]
+    },
+    {
+      "id": "G1.2",
+      "pattern": "네 / 아니요",
+      "description": "Answering yes/no questions using 네 (yes) and 아니요 (no)",
+      "examples": [
+        { "kor": "학생이에요? 네, 학생이에요.", "eng": "Are you a student? Yes, I am a student." },
+        { "kor": "선생님이에요? 아니요, 학생이에요.", "eng": "Are you a teacher? No, I am a student." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+/* ---------------------------------------------------------------------------
+   Reset & base
+   --------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+		Cantarell, sans-serif;
+	line-height: 1.6;
+	color: #1a1a2e;
+	background: #f8f9fa;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* ---------------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------------- */
+
+header {
+	background: #1a1a2e;
+	color: #ffffff;
+	padding: 1.5rem 2rem 1rem;
+	text-align: center;
+}
+
+header h1 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+	letter-spacing: -0.02em;
+}
+
+/* ---------------------------------------------------------------------------
+   Lesson nav tabs
+   --------------------------------------------------------------------------- */
+
+#lesson-nav {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.lesson-tab {
+	background: rgba(255, 255, 255, 0.1);
+	color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 8px;
+	padding: 0.5rem 1.25rem;
+	font-size: 0.95rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background 0.15s,
+		color 0.15s,
+		border-color 0.15s;
+}
+
+.lesson-tab:hover {
+	background: rgba(255, 255, 255, 0.2);
+	color: #ffffff;
+}
+
+.lesson-tab.active {
+	background: #e94560;
+	border-color: #e94560;
+	color: #ffffff;
+	font-weight: 600;
+}
+
+.lesson-tab:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------------------------
+   Main content
+   --------------------------------------------------------------------------- */
+
+main {
+	flex: 1;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+#exercise-types,
+#controls,
+#results {
+	margin-bottom: 2rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------- */
+
+footer {
+	text-align: center;
+	padding: 1.5rem;
+	color: #888;
+	font-size: 0.85rem;
+	border-top: 1px solid #e0e0e0;
+}
+
+/* ---------------------------------------------------------------------------
+   Exercise type buttons
+   --------------------------------------------------------------------------- */
+
+#exercise-types h2,
+#controls h2,
+#results h2 {
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 0.75rem;
+	color: #1a1a2e;
+}
+
+.btn-group {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.type-btn {
+	background: #ffffff;
+	border: 2px solid #d0d5dd;
+	border-radius: 10px;
+	padding: 0.6rem 1.25rem;
+	font-size: 0.92rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		border-color 0.15s,
+		background 0.15s;
+	text-transform: capitalize;
+}
+
+.type-btn:hover {
+	border-color: #6c63ff;
+	background: #f3f1ff;
+}
+
+.type-btn.active {
+	background: #6c63ff;
+	border-color: #6c63ff;
+	color: #ffffff;
+	font-weight: 600;
+}
+
+.empty-hint {
+	color: #888;
+	font-style: italic;
+	text-align: center;
+	padding: 1rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Generate controls
+   --------------------------------------------------------------------------- */
+
+.controls-row {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.count-label {
+	font-size: 0.92rem;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.count-input {
+	width: 64px;
+	padding: 0.4rem 0.5rem;
+	border: 2px solid #d0d5dd;
+	border-radius: 8px;
+	font-size: 0.92rem;
+	text-align: center;
+}
+
+.count-input:focus {
+	border-color: #6c63ff;
+	outline: none;
+}
+
+.generate-btn {
+	background: #e94560;
+	color: #ffffff;
+	border: none;
+	border-radius: 10px;
+	padding: 0.6rem 2rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background 0.15s,
+		opacity 0.15s;
+}
+
+.generate-btn:hover {
+	background: #d13350;
+}
+
+.generate-btn:disabled {
+	background: #ccc;
+	color: #888;
+	cursor: not-allowed;
+	opacity: 0.7;
+}
+
+/* ---------------------------------------------------------------------------
+   Loading spinner
+   --------------------------------------------------------------------------- */
+
+.spinner-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2.5rem 1rem;
+	gap: 1rem;
+}
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	border: 4px solid #e0e0e0;
+	border-top: 4px solid #6c63ff;
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
+}
+
+.spinner-text {
+	font-size: 1.05rem;
+	color: #6c63ff;
+	font-weight: 500;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Exercise cards
+   --------------------------------------------------------------------------- */
+
+.exercise-card {
+	background: #ffffff;
+	border: 1px solid #e0e0e0;
+	border-radius: 12px;
+	padding: 1.25rem 1.5rem;
+	margin-bottom: 1rem;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.ex-header {
+	margin-bottom: 0.5rem;
+}
+
+.type-badge {
+	display: inline-block;
+	padding: 0.15rem 0.65rem;
+	border-radius: 6px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: capitalize;
+	background: #f0f0ff;
+	color: #6c63ff;
+	border: 1px solid #d5d1ff;
+}
+
+.ex-prompt {
+	font-size: 1.15rem;
+	color: #1a1a2e;
+	margin-bottom: 1rem;
+	line-height: 1.7;
+}
+
+.ex-hint {
+	font-size: 0.9rem;
+	color: #6c63ff;
+	margin-bottom: 0.6rem;
+	transition: opacity 0.2s;
+}
+
+.ex-hint.hidden {
+	display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive widget area
+   --------------------------------------------------------------------------- */
+
+.ex-widget {
+	margin-bottom: 0.75rem;
+}
+
+/* ----- Multiple choice options ------------------------------------------- */
+
+.mc-options {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.mc-option-btn {
+	background: #f5f5ff;
+	border: 2px solid #d5d1ff;
+	border-radius: 10px;
+	padding: 0.65rem 1rem;
+	font-size: 1.05rem;
+	text-align: left;
+	cursor: pointer;
+	transition:
+		background 0.15s,
+		border-color 0.15s;
+}
+
+.mc-option-btn:hover:not(:disabled) {
+	background: #e8e7ff;
+	border-color: #6c63ff;
+}
+
+.mc-option-btn:disabled {
+	cursor: default;
+	opacity: 1;
+}
+
+.mc-option-btn.correct {
+	background: #d4edda;
+	border-color: #28a745;
+	color: #155724;
+	font-weight: 600;
+}
+
+.mc-option-btn.incorrect {
+	background: #f8d7da;
+	border-color: #dc3545;
+	color: #721c24;
+	text-decoration: line-through;
+}
+
+/* ----- Free response input ----------------------------------------------- */
+
+.fr-input {
+	width: 100%;
+	max-width: 320px;
+	padding: 0.55rem 0.75rem;
+	border: 2px solid #d0d5dd;
+	border-radius: 8px;
+	font-size: 1rem;
+	margin-right: 0.5rem;
+	transition: border-color 0.15s;
+}
+
+.fr-input:focus {
+	border-color: #6c63ff;
+	outline: none;
+}
+
+.fr-input:disabled {
+	background: #f8f9fa;
+	cursor: default;
+}
+
+/* ----- Fill-in-the-blank prompt ------------------------------------------ */
+
+.fib-prompt {
+	font-size: 1.1rem;
+	line-height: 2.2;
+	margin-bottom: 0.5rem;
+}
+
+.fib-input {
+	width: 120px;
+	padding: 0.35rem 0.5rem;
+	border: none;
+	border-bottom: 2px dashed #a0a0b0;
+	font-size: 1.05rem;
+	text-align: center;
+	background: transparent;
+	transition: border-color 0.15s;
+}
+
+.fib-input:focus {
+	border-bottom-color: #6c63ff;
+	border-bottom-style: solid;
+	outline: none;
+}
+
+.fib-input:disabled {
+	border-bottom-style: solid;
+	background: transparent;
+	cursor: default;
+}
+
+/* ----- Correct / incorrect input states ---------------------------------- */
+
+.input-correct {
+	border-color: #28a745 !important;
+	color: #155724;
+	background: #d4edda !important;
+}
+
+.input-incorrect {
+	border-color: #dc3545 !important;
+	color: #721c24;
+	background: #f8d7da !important;
+}
+
+/* ----- Check button ------------------------------------------------------ */
+
+.check-btn {
+	background: #6c63ff;
+	color: #ffffff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.5rem 1.5rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+	margin-top: 0.5rem;
+}
+
+.check-btn:hover:not(:disabled) {
+	background: #5b52e0;
+}
+
+.check-btn:disabled {
+	background: #ccc;
+	color: #888;
+	cursor: not-allowed;
+}
+
+/* ----- Feedback ---------------------------------------------------------- */
+
+.ex-feedback {
+	font-size: 0.95rem;
+	font-weight: 500;
+	padding: 0.5rem 0.75rem;
+	border-radius: 8px;
+	margin-bottom: 0.75rem;
+	min-height: 2.2rem;
+}
+
+.ex-feedback:empty {
+	display: none;
+}
+
+.feedback-correct {
+	background: #d4edda;
+	color: #155724;
+}
+
+.feedback-incorrect {
+	background: #f8d7da;
+	color: #721c24;
+}
+
+.feedback-reveal {
+	background: #e3f2fd;
+	color: #1565c0;
+}
+
+/* ----- Action buttons ---------------------------------------------------- */
+
+.ex-actions {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin-bottom: 0.6rem;
+}
+
+.action-btn {
+	background: none;
+	border: 1px solid #d0d5dd;
+	border-radius: 6px;
+	padding: 0.3rem 0.75rem;
+	font-size: 0.82rem;
+	cursor: pointer;
+	transition:
+		background 0.15s,
+		border-color 0.15s;
+}
+
+.action-btn:hover {
+	background: #f0f0f5;
+	border-color: #a0a5b0;
+}
+
+.hint-btn {
+	color: #6c63ff;
+	border-color: #d5d1ff;
+}
+
+.hint-btn:hover {
+	background: #f5f5ff;
+	border-color: #6c63ff;
+}
+
+.show-answer-btn {
+	color: #e65100;
+	border-color: #ffe0b2;
+}
+
+.show-answer-btn:hover {
+	background: #fff3e0;
+	border-color: #e65100;
+}
+
+.ex-meta {
+	display: flex;
+	gap: 0.4rem;
+	flex-wrap: wrap;
+}
+
+.tag {
+	display: inline-block;
+	padding: 0.15rem 0.6rem;
+	border-radius: 6px;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.grammar-tag {
+	background: #fff3e0;
+	color: #e65100;
+}
+
+.vocab-tag {
+	background: #e8f5e9;
+	color: #2e7d32;
+}
+
+/* ---------------------------------------------------------------------------
+   Error / empty result cards
+   --------------------------------------------------------------------------- */
+
+.result-card {
+	background: #ffffff;
+	border: 1px solid #e0e0e0;
+	border-radius: 12px;
+	padding: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.error-card {
+	border-color: #ffcdd2;
+	background: #fff5f5;
+}
+
+.error-card h3 {
+	color: #c62828;
+	margin-bottom: 0.5rem;
+}
+
+.empty-card h3 {
+	color: #666;
+	margin-bottom: 0.5rem;
+}
+
+.raw-label {
+	font-weight: 600;
+	margin-top: 1rem;
+	font-size: 0.9rem;
+}
+
+.raw-output {
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 1rem;
+	margin-top: 0.5rem;
+	font-size: 0.85rem;
+	line-height: 1.6;
+	white-space: pre-wrap;
+	word-break: break-word;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Error state
+   --------------------------------------------------------------------------- */
+
+.error {
+	color: #e94560;
+	font-weight: 500;
+	text-align: center;
+	padding: 1rem;
+}
+
+.retry-hint {
+	margin-top: 1rem;
+	font-size: 0.88rem;
+	color: #888;
+	font-style: italic;
+}
+
+.error-detail {
+	margin-top: 0.5rem;
+	font-size: 0.85rem;
+	color: #999;
+	font-family: monospace;
+	word-break: break-word;
+}

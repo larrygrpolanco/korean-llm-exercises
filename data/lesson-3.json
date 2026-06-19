@@ -1,0 +1,89 @@
+{
+  "id": 3,
+  "title": "The University Campus / 대학 캠퍼스",
+  "vocab": [
+    { "korean": "가방", "english": "bag", "pos": "noun" },
+    { "korean": "기숙사", "english": "dormitory", "pos": "noun" },
+    { "korean": "대학교", "english": "college, university", "pos": "noun" },
+    { "korean": "뒤", "english": "back, behind", "pos": "noun" },
+    { "korean": "밑", "english": "bottom, below", "pos": "noun" },
+    { "korean": "밖", "english": "outside", "pos": "noun" },
+    { "korean": "빌딩", "english": "building", "pos": "noun" },
+    { "korean": "서점", "english": "bookstore", "pos": "noun" },
+    { "korean": "시계", "english": "clock, watch", "pos": "noun" },
+    { "korean": "안", "english": "inside", "pos": "noun" },
+    { "korean": "앞", "english": "front", "pos": "noun" },
+    { "korean": "어디", "english": "what place, where", "pos": "noun" },
+    { "korean": "옆", "english": "side, beside", "pos": "noun" },
+    { "korean": "우체국", "english": "post office", "pos": "noun" },
+    { "korean": "의자", "english": "chair", "pos": "noun" },
+    { "korean": "위", "english": "the top side, above", "pos": "noun" },
+    { "korean": "책상", "english": "desk", "pos": "noun" },
+    { "korean": "책", "english": "book", "pos": "noun" },
+    { "korean": "학생회관", "english": "student center", "pos": "noun" },
+    { "korean": "캠퍼스", "english": "campus", "pos": "noun" },
+    { "korean": "층", "english": "floor, layer", "pos": "counter" },
+    { "korean": "있다", "english": "to be (existence)", "pos": "adjective" },
+    { "korean": "저", "english": "uh (hesitation)", "pos": "interjection" },
+    { "korean": "에", "english": "in, at, on (static location)", "pos": "particle" },
+    { "korean": "경제학", "english": "economics", "pos": "noun" },
+    { "korean": "교과서", "english": "textbook", "pos": "noun" },
+    { "korean": "교실", "english": "classroom", "pos": "noun" },
+    { "korean": "반", "english": "class", "pos": "noun" },
+    { "korean": "사전", "english": "dictionary", "pos": "noun" },
+    { "korean": "시간", "english": "time", "pos": "noun" },
+    { "korean": "여자", "english": "woman", "pos": "noun" },
+    { "korean": "우산", "english": "umbrella", "pos": "noun" },
+    { "korean": "질문", "english": "question", "pos": "noun" },
+    { "korean": "집", "english": "home, house", "pos": "noun" },
+    { "korean": "컴퓨터", "english": "computer", "pos": "noun" },
+    { "korean": "홀", "english": "hall", "pos": "noun" },
+    { "korean": "누구", "english": "who", "pos": "noun" },
+    { "korean": "가다", "english": "to go", "pos": "verb" },
+    { "korean": "인사하다", "english": "to greet", "pos": "verb" },
+    { "korean": "읽다", "english": "to read", "pos": "verb" },
+    { "korean": "없다", "english": "to not be / not have", "pos": "adjective" },
+    { "korean": "매일", "english": "every day", "pos": "adverb" },
+    { "korean": "열심히", "english": "diligently", "pos": "adverb" },
+    { "korean": "그래서", "english": "so, therefore", "pos": "conjunction" },
+    { "korean": "그런데", "english": "but, however", "pos": "conjunction" }
+  ],
+  "grammar": [
+    {
+      "id": "G3.1",
+      "pattern": "[Place] + 에 있어요",
+      "description": "Indicates where an entity exists. Requires a location, the particle 에, and the adjective 있다.",
+      "examples": [
+        { "kor": "서점이 어디 있어요?", "eng": "Where is the bookstore?" },
+        { "kor": "우체국 옆에 있어요.", "eng": "It is beside the post office." }
+      ]
+    },
+    {
+      "id": "G3.2",
+      "pattern": "N + 은/는",
+      "description": "Used to shift the topic from one item to another in a conversation.",
+      "examples": [
+        { "kor": "기숙사는 어디 있어요?", "eng": "As for the dormitory, where is it?" },
+        { "kor": "서점은요?", "eng": "How about the bookstore?" }
+      ]
+    },
+    {
+      "id": "G3.3",
+      "pattern": "N이/가 있어요/없어요",
+      "description": "Used to express having or not having an object or person.",
+      "examples": [
+        { "kor": "한국어 사전 있어요?", "eng": "Do you have a Korean dictionary?" },
+        { "kor": "질문 있어요?", "eng": "Do you have any questions?" }
+      ]
+    },
+    {
+      "id": "G3.4",
+      "pattern": "Vst + (으)세요",
+      "description": "A combination of honorific marker ~(으)시 and polite ending ~어요. Used to show respect to the person being talked about or addressed.",
+      "examples": [
+        { "kor": "선생님, 우산 있으세요?", "eng": "Teacher, do you have an umbrella?" },
+        { "kor": "스티브 씨, 앉으세요.", "eng": "Steve, please have a seat." }
+      ]
+    }
+  ]
+}

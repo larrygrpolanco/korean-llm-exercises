@@ -1,0 +1,101 @@
+{
+  "id": 4,
+  "title": "At Home / 집",
+  "vocab": [
+    { "korean": "개", "english": "dog", "pos": "noun" },
+    { "korean": "고등학생", "english": "high school student", "pos": "noun" },
+    { "korean": "남동생", "english": "younger brother", "pos": "noun" },
+    { "korean": "대학원생", "english": "graduate student", "pos": "noun" },
+    { "korean": "동생", "english": "younger sibling", "pos": "noun" },
+    { "korean": "보스턴", "english": "Boston", "pos": "noun" },
+    { "korean": "부모님", "english": "parents", "pos": "noun" },
+    { "korean": "아버지", "english": "father", "pos": "noun" },
+    { "korean": "어머니", "english": "mother", "pos": "noun" },
+    { "korean": "여동생", "english": "younger sister", "pos": "noun" },
+    { "korean": "오빠", "english": "older brother (of a female)", "pos": "noun" },
+    { "korean": "형", "english": "older brother (of a male)", "pos": "noun" },
+    { "korean": "홍콩", "english": "Hong Kong", "pos": "noun" },
+    { "korean": "한", "english": "one (with counter)", "pos": "number" },
+    { "korean": "두", "english": "two (with counter)", "pos": "number" },
+    { "korean": "세", "english": "three (with counter)", "pos": "number" },
+    { "korean": "스무", "english": "twenty (with counter)", "pos": "number" },
+    { "korean": "개", "english": "item counter", "pos": "counter" },
+    { "korean": "권", "english": "volume counter", "pos": "counter" },
+    { "korean": "마리", "english": "animal counter", "pos": "counter" },
+    { "korean": "명", "english": "people counter", "pos": "counter" },
+    { "korean": "몇", "english": "how many / what (with counter)", "pos": "noun" },
+    { "korean": "계시다", "english": "to stay, to be (honorific)", "pos": "verb" },
+    { "korean": "하고", "english": "and (with nouns)", "pos": "particle" },
+    { "korean": "거", "english": "thing (contracted)", "pos": "noun" },
+    { "korean": "누나", "english": "older sister (of a male)", "pos": "noun" },
+    { "korean": "룸메이트", "english": "roommate", "pos": "noun" },
+    { "korean": "방", "english": "room", "pos": "noun" },
+    { "korean": "사이", "english": "relationship / between", "pos": "noun" },
+    { "korean": "생물학", "english": "biology", "pos": "noun" },
+    { "korean": "아파트", "english": "apartment", "pos": "noun" },
+    { "korean": "언니", "english": "older sister (of a female)", "pos": "noun" },
+    { "korean": "만", "english": "only", "pos": "particle" },
+    { "korean": "의", "english": "of (possessive)", "pos": "particle" },
+    { "korean": "고맙다", "english": "to be thankful", "pos": "adjective" },
+    { "korean": "나쁘다", "english": "to be bad", "pos": "adjective" },
+    { "korean": "비싸다", "english": "to be expensive", "pos": "adjective" },
+    { "korean": "예쁘다", "english": "to be pretty", "pos": "adjective" },
+    { "korean": "작다", "english": "to be small", "pos": "adjective" },
+    { "korean": "마시다", "english": "to drink", "pos": "verb" },
+    { "korean": "배우다", "english": "to learn", "pos": "verb" },
+    { "korean": "오다", "english": "to come", "pos": "verb" },
+    { "korean": "자다", "english": "to sleep", "pos": "verb" },
+    { "korean": "주다", "english": "to give", "pos": "verb" },
+    { "korean": "참", "english": "very / truly", "pos": "adverb" },
+    { "korean": "이거", "english": "this thing", "pos": "noun" },
+    { "korean": "저희", "english": "we/our (humble)", "pos": "noun" },
+    { "korean": "제", "english": "my (humble)", "pos": "noun" }
+  ],
+  "grammar": [
+    {
+      "id": "G4.1",
+      "pattern": "A이에요/예요, B이에요/예요?",
+      "description": "Used to ask someone to choose one from the given choices.",
+      "examples": [
+        { "kor": "남동생이에요, 여동생이에요?", "eng": "Is it a younger brother or a younger sister?" },
+        { "kor": "일본 사람이에요, 중국 사람이에요?", "eng": "Are you Japanese or Chinese?" }
+      ]
+    },
+    {
+      "id": "G4.2",
+      "pattern": "Sino-Korean vs Native Korean numbers",
+      "description": "Korean uses two sets of numbers. Native numbers are used for counting items/people, while Sino-Korean are used for dates, money, and floors.",
+      "examples": [
+        { "kor": "동생이 두 명 있어요.", "eng": "I have two younger siblings." },
+        { "kor": "일 달러는 천 원이에요.", "eng": "One dollar is 1,000 won." }
+      ]
+    },
+    {
+      "id": "G4.3",
+      "pattern": "[Noun] [Number] [Counter]",
+      "description": "Specific counters must be used depending on the object type.",
+      "examples": [
+        { "kor": "학생이 스무 명이에요.", "eng": "There are twenty students." },
+        { "kor": "책이 네 권 있어요.", "eng": "There are four books." }
+      ]
+    },
+    {
+      "id": "G4.4",
+      "pattern": "N1 N2 (possessive)",
+      "description": "Possession is usually expressed by placing the possessor before the possessed. The particle '의' is often omitted in conversation.",
+      "examples": [
+        { "kor": "마이클 책", "eng": "Michael's book" },
+        { "kor": "제 동생 거예요.", "eng": "It's my sibling's." }
+      ]
+    },
+    {
+      "id": "G4.5",
+      "pattern": "Vst + 어요/아요 (vowel contraction)",
+      "description": "When two vowels meet in conjugation, they often contract into one syllable.",
+      "examples": [
+        { "kor": "가 + 아요 -> 가요", "eng": "to go" },
+        { "kor": "마시 + 어요 -> 마셔요", "eng": "to drink" }
+      ]
+    }
+  ]
+}
