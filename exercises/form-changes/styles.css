@@ -1,0 +1,184 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 2rem 1.25rem;
+}
+
+header, main, footer { max-width: 800px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 1.5rem; }
+header h1 { font-size: 1.6rem; margin-bottom: 0.35rem; }
+.subtitle { color: #94a3b8; font-size: 0.9rem; }
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.count-label { color: #94a3b8; font-size: 0.85rem; }
+#count {
+  width: 52px;
+  padding: 0.3rem;
+  border-radius: 4px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  text-align: center;
+}
+
+#generate-btn {
+  background: #4f46e5;
+  border: none;
+  color: #fff;
+  padding: 0.55rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+#generate-btn:hover:not(:disabled) { background: #6366f1; }
+#generate-btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+
+/* Spinner */
+.spinner-box { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.85rem; }
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid #334155;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  margin: 0 auto 0.75rem;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Error */
+#error { margin-bottom: 1.5rem; }
+.error-card {
+  background: #2e0808;
+  border: 1px solid #7f1d1d;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+.error-card h3 { color: #fca5a5; margin-bottom: 0.35rem; }
+.error-card p { color: #f87171; font-size: 0.82rem; margin-bottom: 0.5rem; }
+.error-card pre {
+  background: #1a0f0f;
+  color: #fca5a5;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  max-height: 200px;
+}
+
+/* Sections */
+.ex-section { margin-bottom: 2rem; }
+.ex-section h3 {
+  font-size: 0.95rem;
+  color: #a5b4fc;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #334155;
+}
+
+/* Exercise item — row layout */
+.ex-item {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.ex-item.correct { border-color: #166534; background: #0d2818; }
+.ex-item.incorrect { border-color: #7f1d1d; background: #1a0f0f; }
+
+.form-prompt {
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  min-width: 80px;
+  color: #e2e8f0;
+}
+
+.form-arrow {
+  font-size: 1.15rem;
+  color: #6366f1;
+}
+
+.form-input {
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-bottom: 2px solid #6366f1;
+  color: #e2e8f0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 1.05rem;
+  min-width: 100px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  outline: none;
+}
+.form-input:focus { border-color: #818cf8; }
+.form-input:disabled { opacity: 0.8; }
+.form-input.correct { border-color: #22c55e; background: #052e16; }
+.form-input.incorrect { border-color: #ef4444; background: #2e0808; }
+
+/* Buttons */
+.btn-check {
+  background: #4f46e5;
+  border: none;
+  color: #fff;
+  padding: 0.35rem 0.9rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.btn-check:hover:not(:disabled) { background: #6366f1; }
+.btn-check:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+
+.btn-reveal {
+  background: none;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 0.3rem 0.75rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.btn-reveal:hover { border-color: #6366f1; color: #e2e8f0; }
+
+/* Feedback */
+.ex-feedback {
+  font-size: 0.82rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+}
+.fb-correct { color: #4ade80; }
+.fb-incorrect { color: #f87171; }
+.fb-reveal { color: #fbbf24; }
+
+/* Utility */
+.hidden { display: none; }
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #475569;
+}
+footer a { color: #6366f1; text-decoration: none; }
+footer a:hover { text-decoration: underline; }

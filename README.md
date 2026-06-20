@@ -1,93 +1,143 @@
 # Korean LLM Exercise Playground
 
-A zero-dependency Node.js playground for building and iterating on LLM-powered Korean language exercises following the KLEAR textbook. Designed for a Korean language instructor's prompt-engineering feedback loop — tweak a prompt, generate exercises, judge the output, repeat. No infrastructure friction.
+A zero-dependency Node.js playground for building and iterating on LLM-powered Korean language exercises following the KLEAR textbook. Designed for prompt engineering — tweak a prompt, generate exercises, judge the output, repeat. No infrastructure friction.
 
 ## Quick Start
 
 ```bash
 # 1. Set your DeepSeek API key
 cp .env.example .env
-# Edit .env and add your key: DEEPSEEK_API_KEY=sk-...
+# Edit .env: DEEPSEEK_API_KEY=sk-...
 
-# 2. Start the server (no npm install required)
+# 2. Start the server
 node server.js
 
 # 3. Open http://localhost:3000
 ```
 
-**Zero dependencies.** The project uses only Node.js built-in modules (`http`, `fs`, `path`, `https`). No `npm install`, no build tools, no frameworks.
+**Zero dependencies.** Uses only Node.js built-ins (`http`, `fs`, `path`, `https`). No `npm install`, no build tools, no frameworks.
 
 ## How It Works
 
 ```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│  public/     │────▶│  server.js   │────▶│ generator.js │────▶ DeepSeek API
-│  (vanilla    │     │  (thin HTTP  │     │  (pure       │
-│  HTML/CSS/JS)│     │   wrapper)   │     │   module)    │
-└──────────────┘     └──────────────┘     └──────────────┘
-                            │                     │
-                            ▼                     ▼
-                     ┌──────────────┐     ┌──────────────┐
-                     │  data/       │     │  prompts/    │
-                     │  (lesson     │     │  (prompt     │
-                     │   JSON)      │     │   templates) │
-                     └──────────────┘     └──────────────┘
+┌──────────────────┐     ┌──────────────┐     ┌──────────────┐
+│  exercises/      │────▶│  server.js   │────▶│ generator.js │────▶ DeepSeek API
+│  (self-contained │     │  (thin HTTP  │     │  (single     │
+│   HTML/CSS/JS +  │     │   router)    │     │   function)  │
+│   prompt.md)     │     └──────────────┘     └──────────────┘
+└──────────────────┘            │
+                                ▼
+                         ┌──────────────┐
+                         │  data/       │
+                         │  (lesson     │
+                         │   JSON)      │
+                         └──────────────┘
 ```
 
-1. **Pick a lesson** (1–7) — tabs load dynamically from `data/lesson-*.json`
-2. **Pick an exercise type** — buttons auto-discovered from `prompts/lesson-N/*.md`
-3. **Click Generate** — cumulative vocabulary is built, prompt template is filled, DeepSeek LLM is called
-4. **See results** — exercise cards render with prompt, answer, hint, and grammar tags
+1. **Main page** lists available exercises, auto-discovered from the `exercises/` directory
+2. **Click an exercise** to open it — each is a self-contained folder with its own UI and prompt
+3. **Click Generate** — the server loads the exercise's config, lesson data, cumulative vocabulary, and prompt template, then calls the DeepSeek LLM
+4. **See results** — the exercise renders the response however it wants
 
 ## Project Structure
 
 ```
-├── server.js              # Thin HTTP server + static file serving
-├── generator.js            # Pure module: generateExercises()
-├── prompts/                # Prompt templates, organized by lesson
-│   └── lesson-1/
-│       └── fill-blank-g11.md
+├── server.js              # Thin HTTP router + static file serving
+├── generator.js            # One function: generate()
 ├── data/                   # Lesson data (vocab + grammar)
 │   ├── lesson-1.json       # Greetings / 인사
 │   ├── lesson-2.json       # Korean Language Class / 한국어 수업
 │   ├── lesson-3.json       # The University Campus / 대학 캠퍼스
-│   ├── lesson-4.json       # Weekend Activities / 주말 활동
-│   ├── lesson-5.json       # At the Restaurant / 식당에서
-│   ├── lesson-6.json       # Shopping / 쇼핑
-│   └── lesson-7.json       # Daily Routine / 일상생활
-├── public/                 # Playground frontend
-│   ├── index.html
-│   ├── app.js
-│   └── styles.css
+│   ├── lesson-4.json       # At Home / 집
+│   ├── lesson-5.json       # At the Bookstore / 서점에서
+│   ├── lesson-6.json       # My Day / 나의 하루
+│   └── lesson-7.json       # The Weekend / 주말
+├── exercises/              # Self-contained exercise modules
+│   ├── narration/          # Story + fill-in-the-blank (Lesson 1)
+│   │   ├── exercise.json   # Config: name, lessonId, grammarIndex, promptFile
+│   │   ├── index.html
+│   │   ├── app.js
+│   │   ├── styles.css
+│   │   └── prompt.md       # LLM prompt template
+│   ├── form-changes/       # Dictionary ↔ polite form (Lesson 2)
+│   │   └── ...
+│   └── fill-in-country/    # Static exercise — no LLM needed
+│       └── ...
+├── public/                 # Main page (exercise selector)
+│   └── index.html
 ├── data_examples/          # Reference data from KLEAR textbook
-├── docs/                   # PRD and issue specs
-│   ├── prd-llm-playground.md
-│   └── issues-llm-playground/
-└── .env.example            # API key template
+└── .env.example
 ```
+
+## Exercise Modules
+
+Each folder in `exercises/` is a self-contained module. It contains everything needed to run that exercise — HTML, CSS, JS, and (for LLM-powered ones) a prompt template.
+
+### `exercise.json`
+
+Every exercise folder has an `exercise.json` that tells the server how to generate exercises:
+
+```json
+{
+  "name": "Narration Exercise",
+  "description": "LLM generates a story, then creates 3 sections of fill-in-the-blank exercises.",
+  "lessonId": 1,
+  "grammarIndex": 0,
+  "promptFile": "prompt.md"
+}
+```
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `name` | Yes | Display name on the main page |
+| `description` | No | Short description on the main page |
+| `lessonId` | Only for LLM exercises | Which lesson's vocab/grammar to use |
+| `grammarIndex` | No (default: 0) | Which grammar point in the lesson |
+| `promptFile` | Only for LLM exercises | Path to the prompt template (relative to the exercise folder) |
+
+**Static exercises** (like `fill-in-country`) omit `promptFile` and `lessonId` — they don't call the LLM at all.
+
+### Adding a new exercise
+
+1. Create a folder in `exercises/`
+2. Add an `exercise.json` with name and (for LLM exercises) `lessonId` + `promptFile`
+3. Add `index.html`, `app.js`, `styles.css`
+4. For LLM exercises, add a `prompt.md` with `{grammarPattern}`, `{grammarDescription}`, `{examples}`, `{vocabList}`, `{count}` placeholders
+5. Restart the server
+
+That's it. The main page discovers it automatically.
 
 ## Architecture
 
-### Generator Module (`generator.js`)
-
-A **pure JavaScript module** with zero HTTP server awareness — designed to be portable to a production website later with no refactoring.
+### `generator.js` — one function
 
 ```js
-const { generateExercises } = require('./generator')
+const { generate } = require('./generator')
 
-const exercises = await generateExercises({
-  lesson,           // LessonData object
-  grammarPoint,     // GrammarPoint object
-  vocab,            // VocabWord[] (cumulative)
-  promptTemplate,   // string (raw prompt file content)
+const result = await generate({
+  promptTemplate,   // raw prompt .md content
+  grammarPoint,     // { pattern, description, examples }
+  vocab,            // [{ korean, english }] — cumulative
   count             // number (1–10, default 5)
 })
-// Returns: Exercise[]
+// Returns: whatever JSON the LLM emits
 ```
 
-- Calls DeepSeek API (`deepseek-chat` model) with `response_format: { type: "json_object" }`
-- No imports from `http` or any HTTP-related module
+- Calls DeepSeek API (`deepseek-chat`) with `response_format: { type: "json_object" }`
+- No field validation — the prompt defines the output schema, the exercise renders it
 - Full raw response surfaced on parse errors for prompt debugging
+
+### `server.js` — thin router
+
+Two API routes plus static file serving:
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/api/exercises` | List all exercises with metadata |
+| `POST` | `/api/generate/:slug` | Generate exercises for a given exercise |
+| `GET` | `/` | Main exercise selector page |
+| `GET` | `/exercises/:slug/` | Exercise index page |
+| `GET` | `/exercises/:slug/file.ext` | Exercise static assets |
 
 ### Lesson Data (`data/lesson-*.json`)
 
@@ -103,7 +153,9 @@ const exercises = await generateExercises({
       "id": "G1.1",
       "pattern": "N1은/는 N2이에요/예요",
       "description": "Topic-comment equational expression",
-      "examples": [{ "kor": "저는 학생이에요.", "eng": "I am a student." }]
+      "examples": [
+        { "kor": "저는 학생이에요.", "eng": "I am a student." }
+      ]
     }
   ]
 }
@@ -111,7 +163,7 @@ const exercises = await generateExercises({
 
 ### Cumulative Vocabulary
 
-Vocabulary accumulates automatically. Selecting Lesson 3 gives exercises vocabulary from Lessons 1, 2, and 3 — deduplicated by Korean string. The pipeline:
+Vocabulary accumulates across lessons. Selecting Lesson 3 gives exercises vocabulary from Lessons 1, 2, and 3 — deduplicated by Korean string.
 
 | Lesson | Vocab in file | Cumulative |
 |--------|:-----------:|:----------:|
@@ -123,68 +175,43 @@ Vocabulary accumulates automatically. Selecting Lesson 3 gives exercises vocabul
 | 6 | 50 | 265 |
 | 7 | 60 | 322 |
 
-### Prompt Auto-Discovery
-
-Exercise type buttons are auto-discovered at runtime from `prompts/lesson-N/*.md` files. Adding a new `.md` file to `prompts/lesson-3/` makes it appear as a button when Lesson 3 is selected — no code changes, no server restart required.
-
 ### Prompt Template Variables
 
-Prompt files use these template variables: `{grammarPattern}`, `{grammarDescription}`, `{examples}`, `{vocabList}`, `{count}`.
+Prompt files use `{placeholders}` substituted at runtime:
 
-## API
-
-### `GET /api/lessons`
-
-Returns available lessons dynamically from `data/` directory.
-
-### `GET /api/prompts?lessonId=1`
-
-Returns prompt files available for a lesson, discovered from `prompts/lesson-{id}/`.
-
-### `POST /api/generate`
-
-```json
-{
-  "lessonId": 1,
-  "promptFile": "fill-blank-g11.md",
-  "count": 5
-}
-```
-
-Returns exercise objects or an error with raw LLM response for debugging.
+- `{grammarPattern}` — the grammar pattern (e.g. "N1은/는 N2이에요/예요")
+- `{grammarDescription}` — the grammar description
+- `{examples}` — example sentences (formatted as bullet list)
+- `{vocabList}` — cumulative vocabulary (formatted as `word (translation), ...`)
+- `{count}` — number of exercises requested
 
 ## Features
 
 - **7 complete lessons** with vocabulary and grammar from the KLEAR textbook
-- **Dynamic lesson loading** — add a new `data/lesson-N.json` and it appears automatically
-- **Dynamic exercise discovery** — add a prompt `.md` file and it appears as a button at runtime
-- **Cumulative vocabulary** — exercises only use words the student has learned up to that point
+- **Self-contained exercises** — each folder owns its UI, prompt, and config
+- **Auto-discovery** — drop a new folder into `exercises/` and it appears on the main page
+- **Cumulative vocabulary** — exercises only use words the student has learned
 - **Error resilience** — invalid LLM JSON shows raw response for prompt debugging
+- **Static and LLM exercises** — some exercises don't need the LLM at all
 - **Count control** — request 1–10 exercises per generation
-- **Loading spinners, network error states, empty result handling**
 
 ## Design Decisions
 
-- **Zero npm dependencies.** Node built-ins only. Start with `node server.js`.
-- **Generator is pure.** No HTTP/server awareness — drop it into production later.
+- **Zero npm dependencies.** Node built-ins only.
+- **Generator is a single function.** No field validation — the prompt defines the schema.
+- **Each exercise is an island.** No shared assets, no coupling between exercises.
+- **Prompts live with their exercise.** No separate `prompts/` directory.
 - **Frontend is vanilla.** HTML, CSS, JS. No frameworks, no build tools.
-- **Prompt files are standalone `.md`.** Open in any editor, tweak, regenerate.
 - **Lesson data is flat JSON.** Add new lessons by creating a new file.
 
 ## Out of Scope
 
 This is a **prompt-engineering playground**, not a student-facing product.
 
-- No multiple exercise types beyond fill-in-the-blank
-- No character continuity (Michael, Sophia, Steve stories)
-- No learner personalization
-- No streaming / SSE
 - No persistence, authentication, or database
-- No formal test suite (the UI itself is the validation tool)
-
-## Future: Porting to Production
-
-When a prompt proves solid across enough runs, it's considered "promoted" and ready for porting. The `generator.js` module is designed to drop directly into a production website — it has no coupling to HTTP, frameworks, or playground scaffolding.
+- No streaming / SSE
+- No learner personalization
+- No formal test suite
 
 ## License
 

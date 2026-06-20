@@ -1,0 +1,112 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 2rem 1.25rem;
+}
+
+header, main, footer { max-width: 800px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 1.5rem; }
+header h1 { font-size: 1.6rem; margin-bottom: 0.35rem; }
+.subtitle { color: #94a3b8; font-size: 0.9rem; }
+
+/* Grid of cards */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.card.correct { border-color: #166534; background: #0d2818; }
+.card.incorrect { border-color: #7f1d1d; background: #1a0f0f; }
+
+.card-flag {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.card-content { flex: 1; }
+
+.card-prompt {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.card-input {
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-bottom: 2px solid #6366f1;
+  color: #e2e8f0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  min-width: 80px;
+  text-align: center;
+  outline: none;
+}
+.card-input:focus { border-color: #818cf8; }
+.card-input:disabled { opacity: 0.8; }
+.card-input.correct { border-color: #22c55e; background: #052e16; }
+.card-input.incorrect { border-color: #ef4444; background: #2e0808; }
+
+.card-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: 5px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  border: none;
+}
+.btn-check {
+  background: #4f46e5;
+  color: #fff;
+}
+.btn-check:hover:not(:disabled) { background: #6366f1; }
+.btn-check:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+
+.btn-reveal {
+  background: none;
+  border: 1px solid #334155;
+  color: #94a3b8;
+}
+.btn-reveal:hover { border-color: #6366f1; color: #e2e8f0; }
+
+.card-feedback {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+}
+.fb-correct { color: #4ade80; }
+.fb-incorrect { color: #f87171; }
+.fb-reveal { color: #fbbf24; }
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #475569;
+}
+footer a { color: #6366f1; text-decoration: none; }
+footer a:hover { text-decoration: underline; }

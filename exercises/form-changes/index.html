@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Changes — Korean LLM</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🔄 Form Changes</h1>
+      <p class="subtitle">
+        Practice converting between dictionary forms and polite forms (~아요 /
+        ~어요).
+      </p>
+    </header>
+
+    <main>
+      <div class="controls">
+        <label class="count-label">
+          Exercises per section:
+          <input type="number" id="count" value="4" min="1" max="8" step="1" />
+        </label>
+        <button id="generate-btn">Generate Exercises</button>
+      </div>
+
+      <div id="loading" class="spinner-box hidden">
+        <div class="spinner"></div>
+        <p>Generating…</p>
+      </div>
+
+      <div id="error" class="hidden"></div>
+      <div id="results" class="hidden"></div>
+    </main>
+
+    <footer><a href="/">← Back to exercises</a></footer>
+    <script src="app.js"></script>
+  </body>
+</html>

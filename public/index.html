@@ -4,43 +4,99 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Korean LLM Exercise Playground</title>
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 1rem;
+      }
+      h1 { font-size: 1.75rem; margin-bottom: 0.35rem; }
+      .subtitle { color: #94a3b8; margin-bottom: 2rem; font-size: 0.9rem; }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+        width: 100%;
+        max-width: 640px;
+      }
+      .card {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 1.25rem;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.15s;
+        display: block;
+      }
+      .card:hover { border-color: #6366f1; }
+      .card h2 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+      .card p { font-size: 0.82rem; color: #94a3b8; line-height: 1.5; }
+      .card .badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        background: #334155;
+        color: #a5b4fc;
+        padding: 0.15rem 0.5rem;
+        border-radius: 4px;
+        margin-top: 0.6rem;
+      }
+      .empty {
+        color: #64748b;
+        text-align: center;
+        grid-column: 1 / -1;
+        padding: 2rem;
+        font-size: 0.85rem;
+      }
+      .footer {
+        margin-top: 3rem;
+        font-size: 0.78rem;
+        color: #475569;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h1>Korean LLM Exercise Playground</h1>
-      <nav id="lesson-nav">
-        <!-- Lesson tabs rendered by app.js -->
-      </nav>
-    </header>
+    <h1>Korean LLM Exercise Playground</h1>
+    <p class="subtitle">Select an exercise to practice</p>
+    <div class="grid" id="grid"></div>
+    <p class="footer">KLEAR Textbook · DeepSeek LLM · Prompt Engineering</p>
 
-    <main>
-      <section id="exercise-types">
-        <!--
-          Exercise type buttons are auto-discovered at runtime from
-          prompts/lesson-N/*.md files.  Adding a new .md file to a
-          lesson's prompt directory makes it appear as a button when
-          that lesson is selected — no code changes and no server
-          restart required.
-        -->
-      </section>
-
-      <section id="controls">
-        <!-- Generate button + count input (Issue #2) -->
-      </section>
-
-      <section id="results">
-        <!-- Exercise cards rendered by app.js (Issue #2) -->
-      </section>
-    </main>
-
-    <footer>
-      <p>
-        KLEAR Textbook &middot; DeepSeek LLM &middot; Prompt Engineering
-        Playground
-      </p>
-    </footer>
-
-    <script src="app.js"></script>
+    <script>
+      async function init() {
+        const grid = document.getElementById("grid");
+        try {
+          const res = await fetch("/api/exercises");
+          const exercises = await res.json();
+          if (!exercises.length) {
+            grid.innerHTML = '<p class="empty">No exercises yet — add a folder to <code>exercises/</code>.</p>';
+            return;
+          }
+          for (const ex of exercises) {
+            const a = document.createElement("a");
+            a.className = "card";
+            a.href = `/exercises/${ex.slug}/`;
+            let html = `<h2>${esc(ex.name)}</h2>`;
+            if (ex.description) html += `<p>${esc(ex.description)}</p>`;
+            if (ex.lessonId) html += `<span class="badge">Lesson ${ex.lessonId}</span>`;
+            a.innerHTML = html;
+            grid.appendChild(a);
+          }
+        } catch {
+          grid.innerHTML = '<p class="empty">Server not running. Start with <code>node server.js</code></p>';
+        }
+      }
+      function esc(s) {
+        const d = document.createElement("div");
+        d.textContent = s;
+        return d.innerHTML;
+      }
+      init();
+    </script>
   </body>
 </html>
