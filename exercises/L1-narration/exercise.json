@@ -1,5 +1,5 @@
 {
-  "name": "Narration Exercise",
+  "name": "L1 Narration Exercise",
   "description": "LLM generates a character-introduction story, then creates fill-in-the-blank exercises across 3 sections.",
   "lessonId": 1,
   "grammarIndex": 0,

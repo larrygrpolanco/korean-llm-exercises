@@ -19,20 +19,18 @@ const PATH = "/chat/completions";
  * @returns {string}
  */
 function fillTemplate(template, grammar, vocab, count) {
-  const examples = (grammar.examples || [])
-    .map((e) => `- ${e.kor} → ${e.eng}`)
-    .join("\n");
+	const examples = (grammar.examples || [])
+		.map((e) => `- ${e.kor} → ${e.eng}`)
+		.join("\n");
 
-  const vocabList = vocab
-    .map((v) => `${v.korean} (${v.english})`)
-    .join(", ");
+	const vocabList = vocab.map((v) => `${v.korean} (${v.english})`).join(", ");
 
-  return template
-    .replace(/\{grammarPattern\}/g, grammar.pattern || "")
-    .replace(/\{grammarDescription\}/g, grammar.description || "")
-    .replace(/\{examples\}/g, examples)
-    .replace(/\{vocabList\}/g, vocabList)
-    .replace(/\{count\}/g, String(count));
+	return template
+		.replace(/\{grammarPattern\}/g, grammar.pattern || "")
+		.replace(/\{grammarDescription\}/g, grammar.description || "")
+		.replace(/\{examples\}/g, examples)
+		.replace(/\{vocabList\}/g, vocabList)
+		.replace(/\{count\}/g, String(count));
 }
 
 /**
@@ -41,50 +39,54 @@ function fillTemplate(template, grammar, vocab, count) {
  * @returns {Promise<string>} raw response body
  */
 function callDeepSeek(userPrompt) {
-  const apiKey = process.env.DEEPSEEK_API_KEY;
-  if (!apiKey) throw new Error("DEEPSEEK_API_KEY is not set");
+	const apiKey = process.env.DEEPSEEK_API_KEY;
+	if (!apiKey) throw new Error("DEEPSEEK_API_KEY is not set");
 
-  const payload = JSON.stringify({
-    model: "deepseek-chat",
-    messages: [{ role: "user", content: userPrompt }],
-    response_format: { type: "json_object" },
-    temperature: 0.7,
-  });
+	const payload = JSON.stringify({
+		model: "deepseek-chat",
+		messages: [{ role: "user", content: userPrompt }],
+		response_format: { type: "json_object" },
+		temperature: 0.7,
+	});
 
-  const options = {
-    hostname: BASE,
-    port: 443,
-    path: PATH,
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Length": Buffer.byteLength(payload),
-    },
-  };
+	const options = {
+		hostname: BASE,
+		port: 443,
+		path: PATH,
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${apiKey}`,
+			"Content-Length": Buffer.byteLength(payload),
+		},
+	};
 
-  return new Promise((resolve, reject) => {
-    const req = https.request(options, (res) => {
-      let body = "";
-      res.on("data", (c) => (body += c));
-      res.on("end", () => {
-        if (res.statusCode !== 200) {
-          reject(
-            new Error(`DeepSeek returned ${res.statusCode}: ${body.slice(0, 200)}`)
-          );
-          return;
-        }
-        resolve(body);
-      });
-    });
-    req.on("error", reject);
-    req.setTimeout(30_000, () => {
-      req.destroy();
-      reject(new Error("DeepSeek request timed out"));
-    });
-    req.write(payload);
-    req.end();
-  });
+	console.log("  → Calling DeepSeek API…");
+	return new Promise((resolve, reject) => {
+		const req = https.request(options, (res) => {
+			let body = "";
+			res.on("data", (c) => (body += c));
+			res.on("end", () => {
+				if (res.statusCode !== 200) {
+					reject(
+						new Error(
+							`DeepSeek returned ${res.statusCode}: ${body.slice(0, 200)}`,
+						),
+					);
+					return;
+				}
+				console.log("  ✓ DeepSeek responded (" + body.length + " bytes)");
+				resolve(body);
+			});
+		});
+		req.on("error", reject);
+		req.setTimeout(30_000, () => {
+			req.destroy();
+			reject(new Error("DeepSeek request timed out"));
+		});
+		req.write(payload);
+		req.end();
+	});
 }
 
 /**
@@ -94,34 +96,27 @@ function callDeepSeek(userPrompt) {
  * @returns {any}
  */
 function parseResponse(rawBody) {
-  const data = JSON.parse(rawBody);
-  let content = data.choices?.[0]?.message?.content;
-  if (!content) throw new Error("DeepSeek response missing content");
+	const data = JSON.parse(rawBody);
+	let content = data.choices?.[0]?.message?.content;
+	if (!content) throw new Error("DeepSeek response missing content");
 
-  content = content.trim();
-  if (content.startsWith("```")) {
-    content = content
-      .replace(/^```(?:json)?\s*\n?/, "")
-      .replace(/\n?```\s*$/, "");
-  }
+	content = content.trim();
+	if (content.startsWith("```")) {
+		content = content
+			.replace(/^```(?:json)?\s*\n?/, "")
+			.replace(/\n?```\s*$/, "");
+	}
 
-  let parsed;
-  try {
-    parsed = JSON.parse(content);
-  } catch {
-    const err = new Error("LLM returned invalid JSON");
-    err.rawContent = content;
-    throw err;
-  }
+	let parsed;
+	try {
+		parsed = JSON.parse(content);
+	} catch {
+		const err = new Error("LLM returned invalid JSON");
+		err.rawContent = content;
+		throw err;
+	}
 
-  // If the response is wrapped in a json_object container, unwrap the first array.
-  if (!Array.isArray(parsed) && typeof parsed === "object" && parsed !== null) {
-    for (const val of Object.values(parsed)) {
-      if (Array.isArray(val)) return val;
-    }
-  }
-
-  return parsed;
+	return parsed;
 }
 
 /**
@@ -135,9 +130,18 @@ function parseResponse(rawBody) {
  * @returns {Promise<any>} parsed LLM response
  */
 async function generate({ promptTemplate, grammarPoint, vocab, count = 5 }) {
-  const fullPrompt = fillTemplate(promptTemplate, grammarPoint, vocab, count);
-  const rawResponse = await callDeepSeek(fullPrompt);
-  return parseResponse(rawResponse);
+	console.log("  Grammar:", grammarPoint.pattern);
+	console.log("  Vocab words:", vocab.length);
+	console.log("  Count:", count);
+	const fullPrompt = fillTemplate(promptTemplate, grammarPoint, vocab, count);
+	const rawResponse = await callDeepSeek(fullPrompt);
+	const result = parseResponse(rawResponse);
+	console.log(
+		"  ✓ Generated",
+		typeof result === "object" ? JSON.stringify(result).length : "?",
+		"bytes",
+	);
+	return result;
 }
 
 module.exports = { generate };
